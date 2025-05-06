@@ -1,3 +1,13 @@
 # ninja log v6
-4	437	7676448688864926	CMakeFiles/CarRental.dir/main.cpp.obj	25dda1578757287
-438	751	7676448693202344	CarRental.exe	2ec70bc802a12545
+74	452	7682298997124177	CMakeFiles/CarRental.dir/main.cpp.obj	91393196cec7fc59
+917	1628	7682299005550983	CarRental.exe	988af933d7ce10d2
+55	349	7682298996920179	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Exception.cpp.obj	e48806be65108288
+44	765	7682298996820177	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Database.cpp.obj	a22a5d8972a6c7b3
+39	512	7682298996769186	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Column.cpp.obj	ea5963d9fbd80804
+59	729	7682298996970163	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Savepoint.cpp.obj	c8cd538dd5e36f6c
+33	755	7682298996715325	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Backup.cpp.obj	7ceb2e1ed56a9823
+69	740	7682298997064180	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Transaction.cpp.obj	355fbf19ba71fc82
+64	781	7682298997013477	CMakeFiles/sqlitecpp.dir/sqlitecpp/src/Statement.cpp.obj	5a634da3e6ad3607
+28	827	7682298996662429	CMakeFiles/sqlite3.dir/sqlite3/sqlite3.c.obj	93a707e24a48bc5b
+828	877	7682299004656722	sqlite3.lib	bb51f330eafd29b2
+877	917	7682299005150603	sqlitecpp.lib	1b7b92f53d53622d
