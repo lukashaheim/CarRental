@@ -38,6 +38,7 @@ void addCar(SQLite::Database& db) {
          << ", brand: " << brand
          << ", model: " << model << "\n";
 }
+
 void editCar(SQLite::Database& db) {
     int id;
     string registration, brand, model;
@@ -93,6 +94,29 @@ void removeCar(SQLite::Database& db) {
     }
 }
 
+void addCustomer(SQLite::Database& db) {
+    string name, phoneNumber, email;
+
+    cout << "Enter name: ";
+    getline(cin, name);
+    cout << "Enter phone number: ";
+    getline(cin, phoneNumber);
+    cout << "Enter email: ";
+    getline(cin, email);
+
+    SQLite::Statement query(db, "INSERT INTO Customers (name, phone_number, email) VALUES (?, ?, ?)");
+    query.bind(1, name);
+    query.bind(2, phoneNumber);
+    query.bind(3, email);
+    query.exec();
+
+    int id = static_cast<int>(db.getLastInsertRowid());
+    cout << "Added customer: id: " << id
+         << ", name: " << name
+         << ", phone number: " << phoneNumber
+         << ", email: " << email << "\n";
+}
+
 int main() {
     try {
         SQLite::Database db("../CarRental.sqlite", SQLite::OPEN_READWRITE);
@@ -110,6 +134,8 @@ int main() {
                 case 2: editCar(db);
                     break;
                 case 3: removeCar(db);
+                    break;
+                case 4: addCustomer(db);
                     break;
                 case 7:
                     cout << "Bye!\n";
