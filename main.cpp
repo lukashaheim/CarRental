@@ -38,6 +38,7 @@ void addCar(SQLite::Database& db) {
          << ", brand: " << brand
          << ", model: " << model << "\n";
 }
+
 void editCar(SQLite::Database& db) {
     int id;
     string registration, brand, model;
@@ -93,6 +94,84 @@ void removeCar(SQLite::Database& db) {
     }
 }
 
+void addCustomer(SQLite::Database& db) {
+    string name, phoneNumber, email;
+
+    cout << "Enter name: ";
+    getline(cin, name);
+    cout << "Enter phone number: ";
+    getline(cin, phoneNumber);
+    cout << "Enter email: ";
+    getline(cin, email);
+
+    SQLite::Statement query(db, "INSERT INTO Customers (name, phone_number, email) VALUES (?, ?, ?)");
+    query.bind(1, name);
+    query.bind(2, phoneNumber);
+    query.bind(3, email);
+    query.exec();
+
+    int id = static_cast<int>(db.getLastInsertRowid());
+    cout << "Added customer: id: " << id
+         << ", name: " << name
+         << ", phone number: " << phoneNumber
+         << ", email: " << email << "\n";
+}
+
+void editCustomer(SQLite::Database& db) {
+    int id;
+    string name, phoneNumber, email;
+
+    cout << "Enter customer id: ";
+    cin >> id;
+
+    SQLite::Statement checkQuery(db, "SELECT COUNT(*) FROM Customers WHERE id = ?");
+    checkQuery.bind(1, id);
+    checkQuery.executeStep();
+    if (checkQuery.getColumn(0).getInt() == 0) {
+        cout << "Customer not found\n";
+        return;
+    }
+
+    cin.ignore();
+    cout << "Enter new name: ";
+    getline(cin, name);
+    cout << "Enter new phone number: ";
+    getline(cin, phoneNumber);
+    cout << "Enter new email: ";
+    getline(cin, email);
+
+    SQLite::Statement query(db, "UPDATE Customers SET name = ?, phone_number = ?, email = ? WHERE id = ?");
+    query.bind(1, name);
+    query.bind(2, phoneNumber);
+    query.bind(3, email);
+    query.bind(4, id);
+    query.exec();
+
+    if (db.getChanges() > 0) {
+        cout << "Customer was changed succesfully\n";
+    } else {
+        cout << "Customer was not found or not changed\n";
+    }
+
+}
+
+void removeCustomer(SQLite::Database& db) {
+    int id;
+
+    cout << "Enter customer id: ";
+    cin >> id;
+
+    SQLite::Statement query(db, "DELETE FROM Customers WHERE id = ?");
+    query.bind(1, id);
+    query.exec();
+
+    if (db.getChanges() > 0) {
+        cout << "Customer was deleted succesfully\n";
+    } else {
+        cout << "Customer was not found or not deleted\n";
+    }
+}
+
 int main() {
     try {
         SQLite::Database db("../CarRental.sqlite", SQLite::OPEN_READWRITE);
@@ -110,6 +189,12 @@ int main() {
                 case 2: editCar(db);
                     break;
                 case 3: removeCar(db);
+                    break;
+                case 4: addCustomer(db);
+                    break;
+                case 5: editCustomer(db);
+                    break;
+                case 6: removeCustomer(db);
                     break;
                 case 7:
                     cout << "Bye!\n";
