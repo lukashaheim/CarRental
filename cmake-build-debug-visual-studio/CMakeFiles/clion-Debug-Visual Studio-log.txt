@@ -1,0 +1,4 @@
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "NMake Makefiles" -S C:\Users\lukas\IKT103\CarRental -B C:\Users\lukas\IKT103\CarRental\cmake-build-debug-visual-studio
+-- Configuring done (0.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/lukas/IKT103/CarRental/cmake-build-debug-visual-studio

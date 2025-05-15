@@ -19,7 +19,23 @@ add_library(sqlitecpp
 target_include_directories(sqlitecpp PUBLIC sqlitecpp/include)
 target_link_libraries(sqlitecpp sqlite3)
 
-add_executable(CarRental main.cpp)
+add_executable(CarRental
+        main.cpp
+        src/models/Car.cpp
+        src/functions/addCar.cpp
+        include/functions/editCar.h
+        src/functions/editCar.cpp
+        src/functions/removeCar.cpp
+        include/functions/removeCar.h
+        include/functions/addCustomer.h
+        include/functions/editCustomer.h
+        include/functions/removeCustomer.h
+        src/functions/addCustomer.cpp
+        src/functions/editCustomer.cpp
+        src/functions/removeCustomer.cpp
+)
+
+target_include_directories(CarRental PRIVATE include)
 target_link_libraries(CarRental sqlite3 sqlitecpp)
 
 
