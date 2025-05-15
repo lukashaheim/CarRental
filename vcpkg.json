@@ -1,0 +1,12 @@
+{
+  "name" : "carrental",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "bc3512a509f9d29b37346a7e7e929f9a26e66c7e",
+  "dependencies" : [ {
+    "name" : "sqlite3",
+    "version>=" : "3.49.1"
+  }, {
+    "name" : "rapidjson",
+    "version>=" : "2025-02-26"
+  } ]
+}
