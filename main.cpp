@@ -76,6 +76,23 @@ void editCar(SQLite::Database& db) {
 
 }
 
+void removeCar(SQLite::Database& db) {
+    int id;
+
+    cout << "Enter car id: ";
+    cin >> id;
+
+    SQLite::Statement query(db, "DELETE FROM Cars WHERE id = ?");
+    query.bind(1, id);
+    query.exec();
+
+    if (db.getChanges() > 0) {
+        cout << "Car was deleted succesfully\n";
+    } else {
+        cout << "Car was not found or not deleted\n";
+    }
+}
+
 int main() {
     try {
         SQLite::Database db("../CarRental.sqlite", SQLite::OPEN_READWRITE);
@@ -91,6 +108,8 @@ int main() {
                 case 1: addCar(db);
                     break;
                 case 2: editCar(db);
+                    break;
+                case 3: removeCar(db);
                     break;
                 case 7:
                     cout << "Bye!\n";
