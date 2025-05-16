@@ -30,12 +30,18 @@ add_executable(CarRental
         include/functions/addCustomer.h
         include/functions/editCustomer.h
         include/functions/removeCustomer.h
+        include/functions/JsonImport.h
+        include/functions/JsonExport.h
         src/functions/addCustomer.cpp
         src/functions/editCustomer.cpp
         src/functions/removeCustomer.cpp
+        src/functions/JsonImport.cpp
+        src/functions/JsonExport.cpp
+
 )
 
+find_package(RapidJSON CONFIG REQUIRED)
 target_include_directories(CarRental PRIVATE include)
-target_link_libraries(CarRental sqlite3 sqlitecpp)
+target_link_libraries(CarRental PRIVATE rapidjson sqlite3 sqlitecpp)
 
 
