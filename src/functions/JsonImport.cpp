@@ -28,42 +28,85 @@ void JsonImport(SQLite::Database& db, const std::string& filename) {
         return;
     }
 
-    //En løkke som leser igjennom hvert element i arrayet
-    for (rapidjson::SizeType i = 0; i < doc.Size(); i++) {
-        const auto& userfile = doc[i];
+        //Først sjekker om dokumentet har "cars", deretter sjekker den om det er et array
+        //Hvis det er et array, så går det gjennom alle elementene i arrayet og legger det til i databasen
+        if (doc.HasMember("cars") && doc["cars"].IsArray()) {
+            for (const rapidjson::Value& car : doc["cars"].GetArray()) {
 
-        //Hvis Json filen har disse verdiene, legger den det til i databasen
-        if (userfile.HasMember("carid") && userfile.HasMember("registration") && userfile.HasMember("brand") && userfile.HasMember("model") && userfile.HasMember("available") &&
-            userfile.HasMember("customersid") && userfile.HasMember("name") && userfile.HasMember("phone_number") && userfile.HasMember("email") &&
-            userfile.HasMember("rentalsid") && userfile.HasMember("start_date") && userfile.HasMember("end_date")) {
-            std::cout << "Importing file" << std::endl;
+                    //sql spørring
+                    SQLite::Statement query(db,
+                    "UPDATE Cars SET registration = ?, brand = ?, model = ?, available = ? WHERE id = ?");
 
-            //SQL spørringer som legger inn informasjonen i databasen i de ulike tabellene
-            SQLite::Statement query(db,
-            "UPDATE Cars SET car_id = ?, registration = ?, brand = ?, model = ?, available = ? WHERE id = ?");
-            query.bind(1, userfile["carid"].GetInt());
-            query.bind(2, userfile["registration"].GetString());
-            query.bind(3, userfile["brand"].GetString());
-            query.bind(4, userfile["model"].GetString());
-            query.bind(5, userfile["available"].GetBool());
-            query.exec();
+                if (car.HasMember("registration") && car["registration"].IsString()) {
+                    query.bind(1, car["registration"].GetString());
+                }
+                if (car.HasMember("brand") && car["brand"].IsString()) {
+                    query.bind(2, car["brand"].GetString());
+                }
+                if (car.HasMember("model") && car["model"].IsString()) {
+                    query.bind(3, car["model"].GetString());
+                }
+                if (car.HasMember("available") && car["available"].IsInt()) {
+                    query.bind(4, car["available"].GetInt());
+                }
+                if (car.HasMember("id") && car["id"].IsInt()) {
+                    query.bind(5, car["id"].GetInt());
+                }
+                    query.exec();
+                }
+            }
 
-            SQLite::Statement query2(db,
-            "UPDATE Customers SET customer_id = ?, name = ?, phone_number = ?, email = ? WHERE id = ?");
-            query2.bind(1, userfile["customerid"].GetInt());
-            query2.bind(2, userfile["name"].GetString());
-            query2.bind(3, userfile["phone_number"].GetString());
-            query2.bind(4, userfile["email"].GetString());
-            query2.exec();
+        //Først sjekker om dokumentet har "customer", deretter sjekker den om det er et array
+        //Hvis det er et array, så går det gjennom alle elementene i arrayet og legger det til i databasen
+        if (doc.HasMember("customers") && doc["customers"].IsArray()) {
+            for (const rapidjson::Value& customer : doc["customers"].GetArray()) {
 
-            SQLite::Statement query3(db,
-            "UPDATE Rentals SET rental_id = ?, car_id = ?, customer_id = ?, rental_date = ?, return_date = ? WHERE id = ?");
-            query3.bind(1, userfile["rentalid"].GetInt());
-            query3.bind(2, userfile["carid"].GetInt());
-            query3.bind(3, userfile["customerid"].GetInt());
-            query3.bind(4, userfile["start_date"].GetString());
-            query3.bind(5, userfile["end_date"].GetString());
-            query3.exec();
+                //sql spørring
+                    SQLite::Statement query2(db,
+                    "UPDATE Customers SET name = ?, phone_number = ?, email = ? WHERE id = ?");
+
+                if (customer.HasMember("name") && customer["name"].IsString()) {
+                    query2.bind(1, customer["name"].GetString());
+                }
+                if (customer.HasMember("phone_number") && customer["phone_number"].IsString()) {
+                    query2.bind(2, customer["phone_number"].GetString());
+                }
+                if (customer.HasMember("email") && customer["email"].IsString()) {
+                    query2.bind(3, customer["email"].GetString());
+                }
+                if (customer.HasMember("id") && customer["id"].IsInt()) {
+                    query2.bind(4, customer["id"].GetInt());
+                }
+                    query2.exec();
+                }
+            }
+        //Først sjekker om dokumentet har "rentals", deretter sjekker den om det er et array
+        //Hvis det er et array, så går det gjennom alle elementene i arrayet og legger det til i databasen
+        if (doc.HasMember("rentals") && doc["rentals"].IsArray()) {
+            for (const rapidjson::Value& rental : doc["rentals"].GetArray()) {
+
+                //sql spørring
+                SQLite::Statement query3(db,
+                "UPDATE Rentals SET customer_id = ?, car_id = ?, start_date = ?, end_date = ? WHERE id = ?");
+
+                if (rental.HasMember("customer_id") && rental["customer_id"].IsInt()) {
+                    query3.bind(1, rental["customer_id"].GetInt());
+                }
+                if (rental.HasMember("car_id") && rental["car_id"].IsInt()) {
+                    query3.bind(2, rental["car_id"].GetInt());
+                }
+                if (rental.HasMember("start_date") && rental["start_date"].IsString()) {
+                    query3.bind(3, rental["start_date"].GetString());
+                }
+                if (rental.HasMember("end_date") && rental["end_date"].IsString()) {
+                    query3.bind(4, rental["end_date"].GetString());
+                }
+                if (rental.HasMember("id") && rental["id"].IsInt()) {
+                    query3.bind(5, rental["id"].GetInt());
+                }
+                query3.exec();
+            }
         }
-    }
+    std::cout << "Json file imported successfully" << std::endl;
 }
+

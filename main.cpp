@@ -51,7 +51,7 @@ int main() {
                     break;
                 case 6: removeCustomer(db);
                     break;
-                case 7: JsonImport(db, "midlertidig.json");
+                case 7: JsonImport(db, "backup.json");
                     break;
                 case 8: JsonExport(db);
                     break;
