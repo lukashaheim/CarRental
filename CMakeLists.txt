@@ -30,9 +30,18 @@ add_executable(CarRental
         include/functions/addCustomer.h
         include/functions/editCustomer.h
         include/functions/removeCustomer.h
+        include/functions/assignCar.h
+        include/functions/unassignCar.h
         src/functions/addCustomer.cpp
         src/functions/editCustomer.cpp
         src/functions/removeCustomer.cpp
+        src/functions/assignCar.cpp
+        src/functions/unassignCar.cpp
+        src/functions/searchcar.cpp
+        src/functions/searchcustomer.cpp
+        include/functions/searchcar.h
+        include/functions/searchcustomer.h
+
 )
 
 target_include_directories(CarRental PRIVATE include)

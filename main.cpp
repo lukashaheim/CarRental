@@ -8,6 +8,10 @@
 #include "functions/addCustomer.h"
 #include "functions/editCustomer.h"
 #include "functions/removeCustomer.h"
+#include "functions/searchcar.h"
+#include "functions/searchCustomer.h"
+#include "functions/assignCar.h"
+#include "functions/unassignCar.h"
 
 
 using namespace std;
@@ -20,7 +24,9 @@ void showMenu() {
          << "4. Add customer\n"
          << "5. Edit customer\n"
          << "6. Remove customer\n"
-         << "7. Exit\n"
+         << "7. Assign car\n"
+         << "8. Unassign car\n"
+         << "9. Exit\n"
          << "Choice: ";
 }
 
@@ -48,7 +54,11 @@ int main() {
                     break;
                 case 6: removeCustomer(db);
                     break;
-                case 7:
+                case 7: assignCar(db);
+                    break;
+                case 8: unassignCar(db);
+                    break;
+                case 9:
                     cout << "Bye!\n";
                     return 0;
                 default:
