@@ -1,4 +1,27 @@
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/lukas/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -DCMAKE_TOOLCHAIN_FILE=C:\Users\lukas\.vcpkg-clion\vcpkg\scripts\buildsystems\vcpkg.cmake -G Ninja -S C:\Users\lukas\IKT103\CarRental -B C:\Users\lukas\IKT103\CarRental\cmake-build-debug
--- Configuring done (0.1s)
--- Generating done (0.1s)
--- Build files have been written to: C:/Users/lukas/IKT103/CarRental/cmake-build-debug
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/Users/nikolaipedersen/vcpkg/scripts/buildsystems/vcpkg.cmake -G "Unix Makefiles" -S /Users/nikolaipedersen/Desktop/ikt103/CarRental -B /Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug
+-- Running vcpkg install
+Detecting compiler hash for triplet arm64-osx...
+Compiler found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+All requested packages are currently installed.
+Total install time: 85.9 us
+rapidjson provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(RapidJSON CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE RapidJSON rapidjson)
+
+rapidjson provides pkg-config modules:
+
+  # A fast JSON parser/generator for C++ with both SAX/DOM style API
+  RapidJSON
+
+sqlite3 provides pkgconfig bindings.
+sqlite3 provides CMake targets:
+
+    find_package(unofficial-sqlite3 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
+
+-- Running vcpkg install - done
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug

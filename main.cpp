@@ -8,7 +8,8 @@
 #include "functions/addCustomer.h"
 #include "functions/editCustomer.h"
 #include "functions/removeCustomer.h"
-
+#include "functions/JsonImport.h"
+#include "functions/JsonExport.h"
 
 using namespace std;
 
@@ -20,7 +21,9 @@ void showMenu() {
          << "4. Add customer\n"
          << "5. Edit customer\n"
          << "6. Remove customer\n"
-         << "7. Exit\n"
+         << "7. Import Json\n"
+         << "8. Export Json\n"
+         << "9. Exit\n"
          << "Choice: ";
 }
 
@@ -48,7 +51,11 @@ int main() {
                     break;
                 case 6: removeCustomer(db);
                     break;
-                case 7:
+                case 7: JsonImport(db, "backup.json");
+                    break;
+                case 8: JsonExport(db);
+                    break;
+                case 9:
                     cout << "Bye!\n";
                     return 0;
                 default:
