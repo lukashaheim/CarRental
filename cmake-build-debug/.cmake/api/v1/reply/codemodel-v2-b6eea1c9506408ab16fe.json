@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CarRental",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CarRental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CarRental-Debug-4d612f18e0afad30ece2.json",
+					"name" : "CarRental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sqlite3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sqlite3-Debug-efbd39b3ab53454dfa4b.json",
+					"name" : "sqlite3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sqlitecpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sqlitecpp-Debug-925015b14441ebf99856.json",
+					"name" : "sqlitecpp",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/matti/OneDrive - Universitetet i Agder/Desktop/datarental/CarRental/cmake-build-debug",
+		"source" : "C:/Users/matti/OneDrive - Universitetet i Agder/Desktop/datarental/CarRental"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
