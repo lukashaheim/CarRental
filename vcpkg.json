@@ -8,5 +8,11 @@
   }, {
     "name" : "rapidjson",
     "version>=" : "2025-02-26"
+  }, {
+    "name" : "pkgconf",
+    "version>=" : "2.4.3#1"
+  }, {
+    "name" : "gtkmm",
+    "version>=" : "4.14.0"
   } ]
 }

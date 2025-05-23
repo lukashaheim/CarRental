@@ -1,5 +1,0 @@
-/Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug/CMakeFiles/sqlite3.dir
-/Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug/CMakeFiles/sqlitecpp.dir
-/Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug/CMakeFiles/CarRental.dir
-/Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/nikolaipedersen/Desktop/ikt103/CarRental/cmake-build-debug/CMakeFiles/rebuild_cache.dir

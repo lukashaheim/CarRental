@@ -3,8 +3,9 @@
 
 #pragma once
 #include <SQLiteCpp/SQLiteCpp.h>
+#include <string>
 
-void addCar(SQLite::Database& db);
+void addCar(SQLite::Database& db, const std::string& registration, const std::string& brand, const std::string& model);
 
 
 #endif
