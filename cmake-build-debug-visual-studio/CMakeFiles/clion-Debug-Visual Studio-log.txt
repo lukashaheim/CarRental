@@ -1,4 +1,32 @@
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "NMake Makefiles" -S C:\Users\lukas\IKT103\CarRental -B C:\Users\lukas\IKT103\CarRental\cmake-build-debug-visual-studio
--- Configuring done (0.0s)
+C:\Users\emilm\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -G "NMake Makefiles" -S C:\Users\emilm\ikt103_Eksamen\CarRental -B C:\Users\emilm\ikt103_Eksamen\CarRental\cmake-build-debug-visual-studio
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.34918/bin/Hostx64/x64/cl.exe
+All requested packages are currently installed.
+Total install time: 2.23 ms
+gtkmm provides pkg-config modules:
+
+  # C++ binding for the GTK+ toolkit
+  gtkmm-4.0
+
+pkgconf provides pkg-config modules:
+
+  # a library for accessing and manipulating development framework configuration
+  libpkgconf
+
+rapidjson provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(RapidJSON CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE RapidJSON rapidjson)
+
+sqlite3 provides pkgconfig bindings.
+sqlite3 provides CMake targets:
+
+    find_package(unofficial-sqlite3 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
+
+-- Running vcpkg install - done
+-- Configuring done (6.0s)
 -- Generating done (0.1s)
--- Build files have been written to: C:/Users/lukas/IKT103/CarRental/cmake-build-debug-visual-studio
+-- Build files have been written to: C:/Users/emilm/ikt103_Eksamen/CarRental/cmake-build-debug-visual-studio

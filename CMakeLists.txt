@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.30)
 project(CarRental)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTKMM REQUIRED IMPORTED_TARGET gtkmm-4.0)
+
 set(CMAKE_CXX_STANDARD 17)
 
 add_library(sqlite3 sqlite3/sqlite3.c)
@@ -33,9 +36,17 @@ add_executable(CarRental
         src/functions/addCustomer.cpp
         src/functions/editCustomer.cpp
         src/functions/removeCustomer.cpp
+        src/views/main_menu.cpp
+        src/views/main_menu.h
+        src/views/car/car_menu.cpp
+        src/views/car/car_menu.h
+        src/views/car/add_car_page.cpp
+        src/views/car/add_car_page.h
+        src/views/car/edit_car_page.cpp
+        src/views/car/edit_car_page.h
 )
 
 target_include_directories(CarRental PRIVATE include)
-target_link_libraries(CarRental sqlite3 sqlitecpp)
+target_link_libraries(CarRental sqlite3 sqlitecpp PkgConfig::GTKMM)
 
 

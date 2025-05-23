@@ -38,3 +38,30 @@ void editCar(SQLite::Database& db) {
         std::cout << "Car was not found or not changed\n";
     }
 }
+
+bool editCar_check(SQLite::Database& db, int id) {
+
+    SQLite::Statement checkQuery(db, "SELECT COUNT(*) FROM Cars WHERE id = ?");
+    checkQuery.bind(1, id);
+    checkQuery.executeStep();
+    if (checkQuery.getColumn(0).getInt() == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+bool editCar_change(SQLite::Database& db, int id, std::string registration, std::string brand, std::string model) {
+    SQLite::Statement query(db, "UPDATE Cars SET registration = ?, brand = ?, model = ? WHERE id = ?");
+    query.bind(1, registration);
+    query.bind(2, brand);
+    query.bind(3, model);
+    query.bind(4, id);
+    query.exec();
+
+    if (db.getChanges() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
